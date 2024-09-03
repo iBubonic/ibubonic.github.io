@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inmate Database Form</title>
+</head>
+<body>
+    <h2>Inmate Database Form</h2>
+    <form id="inmate-form">
+        <label for="mugshot-link">Mugshot Link:</label>
+        <input type="text" id="mugshot-link" name="mugshot-link" placeholder="Enter mugshot URL"><br><br>
+
+        <label for="mdc-file-link">MDC File Link:</label>
+        <input type="text" id="mdc-file-link" name="mdc-file-link" placeholder="Enter MDC file URL"><br><br>
+
+        <label for="inmate-profile-link">Inmate Profile Link:</label>
+        <input type="text" id="inmate-profile-link" name="inmate-profile-link" placeholder="Enter inmate profile URL"><br><br>
+
+        <label for="inmate-full-name">Inmate's Full Name:</label>
+        <input type="text" id="inmate-full-name" name="inmate-full-name" placeholder="Enter full name"><br><br>
+
+        <label for="aliases">Aliases:</label>
+        <input type="text" id="aliases" name="aliases" placeholder="Enter aliases"><br><br>
+
+        <label for="organizational-affiliations">Organizational Affiliations:</label>
+        <input type="text" id="organizational-affiliations" name="organizational-affiliations" placeholder="Enter affiliations"><br><br>
+
+        <label for="validation-status">Validation or Membership Status:</label>
+        <input type="text" id="validation-status" name="validation-status" placeholder="Enter validation status"><br><br>
+
+        <label for="sangang-status">Sangang Status:</label>
+        <input type="text" id="sangang-status" name="sangang-status" placeholder="Enter Sangang status"><br><br>
+
+        <label for="personal-affiliations">Personal Affiliations:</label>
+        <input type="text" id="personal-affiliations" name="personal-affiliations" placeholder="Enter personal affiliations"><br><br>
+
+        <label for="housing-assignment">Housing Assignment:</label>
+        <input type="text" id="housing-assignment" name="housing-assignment" placeholder="Enter housing assignment"><br><br>
+
+        <label for="tattoos-markings">Tattoos and Markings:</label>
+        <textarea id="tattoos-markings" name="tattoos-markings" rows="4" cols="50" placeholder="Describe tattoos and markings"></textarea><br><br>
+
+        <input type="button" value="Generate BBCode" onclick="generateBBCode()">
+    </form>
+
+    <h3>Generated BBCode:</h3>
+    <textarea id="output" rows="20" cols="80" readonly></textarea>
+
+    <script>
+        function generateBBCode() {
+            var mugshotLink = document.getElementById("mugshot-link").value;
+            var mdcFileLink = document.getElementById("mdc-file-link").value;
+            var inmateProfileLink = document.getElementById("inmate-profile-link").value;
+            var inmateFullName = document.getElementById("inmate-full-name").value;
+            var aliases = document.getElementById("aliases").value;
+            var organizationalAffiliations = document.getElementById("organizational-affiliations").value;
+            var validationStatus = document.getElementById("validation-status").value;
+            var sangangStatus = document.getElementById("sangang-status").value;
+            var personalAffiliations = document.getElementById("personal-affiliations").value;
+            var housingAssignment = document.getElementById("housing-assignment").value;
+            var tattoosMarkings = document.getElementById("tattoos-markings").value;
+
+            // Hardcoded report name placeholder
+            var reportName = "REPORT NAME HERE";
+
+            var bbcode = "[divbox=#FFFFFF]\n";
+            bbcode += "    [center]\n";
+            bbcode += "    [b][size=130]INMATE DATABASE BOARD [/size][/b][/center]\n";
+            bbcode += "    [hr][/hr]\n";
+            bbcode += "    [center][b]INMATE FILE[/b][/center][hr][/hr]\n";
+            bbcode += "    [CENTER][img]" + mugshotLink + "[/img][/CENTER]\n";
+            bbcode += "    [center][b]MDC FILE:[/b] [url=" + mdcFileLink + "]ACCESS[/URL][/center]\n";
+            bbcode += "    [center][b]INMATE PROFILE:[/b] [url=" + inmateProfileLink + "]ACCESS[/URL][/center]\n";
+            bbcode += "    [list=none][*][b]INMATE'S FULL NAME:[/b] " + inmateFullName + "\n";
+            bbcode += "    [*][b]ALIASES:[/b] " + aliases + "\n";
+            bbcode += "    [*][b]ORGANIZATIONAL AFFILIATIONS:[/b] " + organizationalAffiliations + "\n";
+            bbcode += "    [*][b]VALIDATION OR MEMBERSHIP STATUS:[/b] " + validationStatus + "\n";
+            bbcode += "    [*][b]SANGANG STATUS:[/b] " + sangangStatus + "\n";
+            bbcode += "    [*][b]PERSONAL AFFILIATIONS:[/b] " + personalAffiliations + "\n";
+            bbcode += "    [*][b]HOUSING ASSIGNMENT:[/b] " + housingAssignment + "\n";
+            bbcode += "    [*][b]TATTOOS AND MARKINGS:[/b]\n";
+            bbcode += "    [spoiler][img]" + tattoosMarkings + "[/img][/spoiler]\n";
+            bbcode += "    [/list]\n";
+            bbcode += "    [hr][/hr]\n";
+            bbcode += "    [center][b]REPORT SECTION[/b][/center]\n";
+            bbcode += "    [hr][/hr]\n";
+            bbcode += "    [list=none][size=85][*] [url=]" + reportName + "[/url][/size]\n";
+            bbcode += "[/divbox]";
+
+            document.getElementById("output").value = bbcode;
+        }
+    </script>
+</body>
+</html>
